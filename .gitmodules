@@ -1,0 +1,3 @@
+[submodule "home/bin/myrepos"]
+	path = home/bin/myrepos
+	url = https://github.com/joeyh/myrepos.git

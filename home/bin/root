@@ -1,0 +1,12 @@
+#!/bin/bash 
+# Little script to su to root and set up the appropriate environment
+
+# If my PATH is not setup then the PATH to this script won't be there... so I am going to gamble on it...
+echo "
+	`tput bold`*** Switching user to root ***`tput sgr0`
+"
+HOMEDIR=$HOME
+sudo su - root -c "bash --rcfile ${HOMEDIR}/.bashrc"
+echo "
+	`tput bold`*** You are no longer root ***`tput sgr0`
+"
