@@ -1,0 +1,30 @@
+#!/bin/bash
+# Simple little script to remove existing keys in ~/.ssh/known_hosts
+# then gather the keys for the IP, FQDN and the shortname
+#
+# BE AWARE - you are trusting these hosts and potentially
+#            leaving yourself open for a man in the middle attack
+
+if [[ $# -lt 1 ]]
+then
+  echo 'Usage: $0 host1 host2 host3'
+  exit 1
+fi
+
+for host in $*
+do
+  Details=`getent hosts ${host}`
+  if [[ -z $Details ]]
+  then
+    echo 'Unknown host - $host'
+    exit 2
+  fi
+  IP=`echo ${Details} | gawk '{print $1}'`
+  FQDN=`echo ${Details} | gawk '{print $2}'`
+  Shortname=`echo ${FQDN} | gawk -F. '{print $1}'`
+  for Entry in $IP $FQDN $Shortname
+  do
+    ssh-keygen -R ${Entry}
+  done
+  ssh-keyscan -H -t rsa,dsa $IP $FQDN $Shortname >>~/.ssh/known_hosts
+done
