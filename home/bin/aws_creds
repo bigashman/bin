@@ -12,13 +12,7 @@ AWS_RoleName=${AWS_ROLENAME}
 # Let's check and see if there were any arguments passed to the script
 # We'll then exit out with some usage information
 
-if [[ $# != 0 ]]
-then
-  echo "
-  Usage:
-${0}
-
-  You will be prompted for the necessary inputs.  You can set these as environment variables:
+echo "
 
 Environment Variable - Description
 --------------------   -----------
@@ -29,8 +23,6 @@ AWS_ACCOUNT          - The AWS Account to use.  Visit http://aws/ and select the
 AWS_ROLENAME         - The AWS Role to use.  Visit http://aws/ and select the `tput bold`name`tput sgr 0` (e.g. UENTAWSNEWGROUP)
 
 "
-  exit 1
-fi
 
 # If the required variables are not set:
 
