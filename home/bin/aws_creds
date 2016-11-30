@@ -55,19 +55,8 @@ export AWS_SECRET_ACCESS_KEY=$(echo "$Creds" | awk -F"," '{print $1}')
 export AWS_SESSION_TOKEN=$(echo "$Creds" | awk -F"," '{print $2}')
 export AWS_DEFAULT_REGION=us-east-1
 echo "
-  If you have run:
-. ${0}
-
-  Then your environment variables have been configured like so:
+  Your environment variables have been configured like so:
 AWS_ACCESS_KEY: $AWS_ACCESS_KEY
 AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
 AWS_SECURITY_TOKEN: $AWS_SECURITY_TOKEN
 "
-
-#echo "#Your Access Key is: " $AWS_ACCESS_KEY
-#echo "#Your Secret Access Key is: "$AWS_SECRET_ACCESS_KEY
-#echo "#Your Session Token is: "$AWS_SECURITY_TOKEN
-#echo
-#echo "# You can run:"
-#echo
-#echo '# eval $(${0})'
