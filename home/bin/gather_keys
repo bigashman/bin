@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 # Simple little script to remove existing keys in ~/.ssh/known_hosts
 # then gather the keys for the IP, FQDN and the shortname
 #
